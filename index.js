@@ -56,7 +56,7 @@ function buildArgs (source, givenOutput, loop, initialVolume, showOsd) {
 
 // ----- Omx Class ----- //
 
-function Omx (source, args) {
+function Omx (args) {
 
 	// ----- Local Vars ----- //
 
@@ -83,7 +83,7 @@ function Omx (source, args) {
 	}
 
 	// Spawns the omxplayer process.
-	function spawnPlayer (src, args) {
+	function spawnPlayer (args) {
 
 		// let args = buildArgs(src, options);
 		// console.log('args for omxplayer:', args);
@@ -121,17 +121,17 @@ function Omx (source, args) {
 	// ----- Methods ----- //
 
 	// Restarts omxplayer with a new source.
-	omxplayer.newSource = (src, args) => {
+	omxplayer.newSource = (args) => {
 
 		if (open) {
 
-			player.on('close', () => { player = spawnPlayer(src, args); });
+			player.on('close', () => { player = spawnPlayer(args); });
 			player.removeListener('close', updateStatus);
 			writeStdin('q');
 
 		} else {
 
-			player = spawnPlayer(src, args);
+			player = spawnPlayer(args);
 
 		}
 
