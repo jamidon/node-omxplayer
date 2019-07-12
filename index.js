@@ -114,8 +114,8 @@ function Omx (args) {
 
 	// ----- Setup ----- //
 
-	if (source) {
-		player = spawnPlayer(source, args);
+	if (args) {
+		player = spawnPlayer(args);
 	}
 
 	// ----- Methods ----- //
